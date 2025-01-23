@@ -92,3 +92,18 @@ The smoke tests have now been migrated from Concourse to AWS. [Full instructions
 
 ## New Environments
 If creating smoke tests on new environments, ensure to create new secrets for all appropriate fields, also new templates in Notify will need creating, as well as API keys.  For Radius ensure that it knows about the ```task``` ip's as well as the smoke test org ip's ```<env>.wifi-smoke-tests-x```, these will need to be entered into the Admin App for the Smoke Test Org.
+
+### Generating the TLS certificates to test the CBA user Journey
+
+The smoketests require that dummy certificates are generated to function correctly. You will need to create these if you are setting up a new GovWifi environment from scratch or testing locally. They are referenced through environment variables in the EAP TLS journey ([code](https://github.com/GovWifi/govwifi-smoke-tests/blob/cfb97ee543514209989e53b9001644c839570cc3/spec/system/signup/eap_tls_journey_spec.rb#L8-L14)) and they are referenced in the [govwifi-terraform code](https://github.com/GovWifi/govwifi-terraform/blob/f0fc070b4d0d281f8d721c64bf823b9fddf0cb0b/govwifi-smoke-tests/codebuild.tf#L110-L118)
+
+You can generate them with the following steps:
+
+* Make a directory called `smoke_test_certificates` or the directory name set in [this line of the Makefile](https://github.com/GovWifi/govwifi-smoke-tests/blob/4a182cbf609c43c4407dbea87ea956633d470c6c/Makefile#L3)
+* Run `make certs` in your terminal
+(If you need to edit these commands they can be found in [this section of the Smoketests Makefile](https://github.com/GovWifi/govwifi-smoke-tests/blob/4a182cbf609c43c4407dbea87ea956633d470c6c/Makefile#L65-L74))
+
+If you are setting up a new GovWifi environment add these certificates to AWS secret manager. Name the secrets `smoke_tests/certificates/public` for the public key and `smoke_tests/certificates/private` for the private key. 
+
+[You can read more about CBA(Certificate Based Authentication) in our team manual](https://dev-docs.wifi.service.gov.uk/about-govwifi/device-wifi.html#what-is-it)
+
