@@ -95,7 +95,7 @@ If creating smoke tests on new environments, ensure to create new secrets for al
 
 ### Generating the TLS certificates to test the CBA user Journey
 
-The smoketests require that dummy certificates are generated to function correctly. You will need to create these if you are setting up a new GovWifi environment from scratch or testing locally. They are referenced through environment variables in the EAP TLS journey ([code](https://github.com/GovWifi/govwifi-smoke-tests/blob/cfb97ee543514209989e53b9001644c839570cc3/spec/system/signup/eap_tls_journey_spec.rb#L8-L14)) and they are referenced in the [govwifi- terraform code](https://github.com/GovWifi/govwifi-terraform/blob/f0fc070b4d0d281f8d721c64bf823b9fddf0cb0b/govwifi-smoke-tests/codebuild.tf#L110-L118)
+The smoketests require that dummy certificates are generated to function correctly. You will need to create these if you are setting up a new GovWifi environment from scratch or testing locally. They are referenced through environment variables in the EAP TLS journey ([code](https://github.com/GovWifi/govwifi-smoke-tests/blob/cfb97ee543514209989e53b9001644c839570cc3/spec/system/signup/eap_tls_journey_spec.rb#L8-L14)) and they are referenced in the [govwifi-terraform code](https://github.com/GovWifi/govwifi-terraform/blob/f0fc070b4d0d281f8d721c64bf823b9fddf0cb0b/govwifi-smoke-tests/codebuild.tf#L110-L118)
 
 You can generate them with the following steps:
 
