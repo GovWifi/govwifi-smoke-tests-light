@@ -12,7 +12,8 @@ feature "Team Page" do
     it "adds a team member" do
       within(".leftnav") { click_link "Team members" }
       find("a", class: "govuk-button", text: "Invite a team member").click
-      fill_in "user[email]", with: test_email
+      fill_in "Email address", with: test_email
+      choose "Administrator", visible: false
       click_button "Send invitation email"
 
       expect(page).to have_content "#{test_email} has been invited to join"
