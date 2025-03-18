@@ -32,16 +32,16 @@ feature "Sponsor Journey" do
   end
   describe "Validate preconditions" do
     it "has removed any smoke test users" do
-      using_session("Admin") do
-        login(username: ENV["GW_SUPER_ADMIN_USER"], password: ENV["GW_SUPER_ADMIN_PASS"], secret: ENV["GW_SUPER_ADMIN_2FA_SECRET"])
-        click_link("User Details")
-        fill_in "Username, email address or phone number", with: @sponsored_email_address
-        click_button "Find user details"
-        expect(page).to have_content("Nothing found")
-        fill_in "Username, email address or phone number", with: @sponsored_sms_number
-        click_button "Find user details"
-        expect(page).to have_content("Nothing found")
-      end
+      logout
+      login(username: ENV["GW_SUPER_ADMIN_USER"], password: ENV["GW_SUPER_ADMIN_PASS"], secret: ENV["GW_SUPER_ADMIN_2FA_SECRET"])
+      click_link("User Details")
+      fill_in "Username, email address or phone number", with: @sponsored_email_address
+      click_button "Find user details"
+      expect(page).to have_content("Nothing found")
+      fill_in "Username, email address or phone number", with: @sponsored_sms_number
+      click_button "Find user details"
+      expect(page).to have_content("Nothing found")
+      logout
     end
     it "has set the 'read' flag on all relevant emails" do
       expect(read_email(query: @sponsored_query)).to be_nil
