@@ -26,6 +26,7 @@ feature "Settings Page" do
       expect(page).to have_xpath "//h1[text()='Locations']"
 
       change_password new_password, ENV["GW_PASS"]
+      expect(page).to have_content "Your account has been updated successfully."
     end
   end
 
