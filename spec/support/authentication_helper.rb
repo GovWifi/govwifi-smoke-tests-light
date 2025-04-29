@@ -16,6 +16,6 @@ module AuthenticationHelper
 
   def logout
     click_link "Sign out" if page.has_link?("Sign out")
-    sleep 30 #wait for 2fa code to reset
+    sleep 30 # wait for 2fa code to reset
   end
 end
