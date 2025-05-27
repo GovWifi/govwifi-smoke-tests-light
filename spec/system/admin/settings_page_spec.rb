@@ -31,16 +31,12 @@ feature "Settings Page" do
   end
 
   describe "GovWifi servers" do
-    it "shows three london servers" do
+    it "shows the Radius Ip addresses" do
       within(".leftnav") { click_link "Settings" }
 
-      expect(page).to have_css("#london-radius-ips .ip-address", count: 3)
-    end
-
-    it "shows three dublin servers" do
-      within(".leftnav") { click_link "Settings" }
-
-      expect(page).to have_css("#dublin-radius-ips .ip-address", count: 3)
+      ENV["RADIUS_IPS"].split(",").each do |ip|
+        expect(page).to have_content(ip)
+      end
     end
   end
 end
