@@ -84,7 +84,7 @@ bundle exec rspec
 
 ## Updating The Google API Token
 
-Instructions for updating the [Google API token](https://github.com/alphagov/govwifi-smoke-tests/blob/363d6827e4eb7763003d0d9f4fd4f4288c6fa28a/smoke-tests-concourse.yml#L136) [can be found here](https://docs.google.com/document/d/1uAaho6jRFUyBT4WRFuDN8pfDmHjfYvG6hT_uo4g1pqA/edit#heading=h.2q4zw5lc8jgj)
+Instructions for updating the [Google API token](https://github.com/GovWifi/govwifi-smoke-tests/blob/363d6827e4eb7763003d0d9f4fd4f4288c6fa28a/smoke-tests-concourse.yml#L136) [can be found here](https://docs.google.com/document/d/1uAaho6jRFUyBT4WRFuDN8pfDmHjfYvG6hT_uo4g1pqA/edit#heading=h.2q4zw5lc8jgj)
 
 ## Running The Smoke Tests In Our Environments
 
